@@ -86,3 +86,31 @@ Active Directory can be integrated with various other services, such as LDAP (Li
 - **Dependency on Infrastructure:** AD relies on the availability of Domain Controllers, and issues with the network or DCs can impact login and authentication processes.
 
 ---
+
+## Active Directory Sequence Diagram Explanation
+
+The sequence diagram below illustrates the interactions and processes within Active Directory, focusing on user authentication, resource access, and policy application.
+
+![Active Directory Processes](https://github.com/JainamZobaliya/PixelBlogs/blob/master/tech-pixels/images/AD_SequenceDiagram.png)
+
+## 1. User Requests Authentication
+
+- The **User** initiates the process by requesting authentication from the **Domain Controller**.
+
+## 2. Authentication Process
+
+- The **Domain Controller** forwards the credentials to the **Kerberos Authentication** service to validate them.
+- **Kerberos** checks the credentials and responds back to the **Domain Controller** with either an "Auth Success" or "Auth Fail" message.
+- The **Domain Controller** then informs the **User** whether the authentication was successful or not.
+
+## 3. Resource Access
+
+- If authentication is successful, the **User** proceeds to request access to a resource (like a file, application, or server) from the **Resource Access** system.
+- **Resource Access** then communicates with the **LDAP Service** to validate the user's permissions for accessing the requested resource.
+- Based on the permissions, **LDAP** either grants or denies access.
+- The **Resource Access** system then responds to the **User** with the result (access granted or denied).
+
+## 4. Group Policy Application
+
+- Independently, the **Domain Controller** ensures that the **Group Policy** settings are applied to the **User**.
+- **Group Policy** defines configurations and restrictions that apply to the **User**’s account, ensuring compliance with organizational policies.
