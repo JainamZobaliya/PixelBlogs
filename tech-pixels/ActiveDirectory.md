@@ -23,7 +23,7 @@
   - [Security Considerations](#security-considerations)
   - [Benefits of Using AD for Login](#benefits-of-using-ad-for-login)
   - [Challenges](#challenges)
-  - [Active Directory Sequence Diagram Explanation](#active-directory-sequence-diagram-explanation)
+  - [Understanding Active Directory Authentication and Resource Access](#understanding-active-directory-authentication-and-resource-access)
     - [1. User Requests Authentication](#1-user-requests-authentication)
     - [2. Authentication Process](#2-authentication-process)
     - [3. Resource Access](#3-resource-access)
@@ -43,8 +43,6 @@ Here's an overview of how Active Directory is used for login purposes:
 - **Domains:** AD is structured into domains, which are collections of objects (users, groups, computers, etc.). A domain is usually tied to a specific organization or part of an organization.
 
 ## Login Process
-
-![Login Process](images/AD_login_process.png)
 
 - **User Login:** When a user logs in to a machine that is part of an AD domain, the login request is sent to an AD Domain Controller (DC).
 - **Credential Validation:** The Domain Controller checks the provided credentials (username and password) against the stored credentials in the AD database.
@@ -92,30 +90,30 @@ Active Directory can be integrated with various other services, such as LDAP (Li
 
 ---
 
-## Active Directory Sequence Diagram Explanation
+## Understanding Active Directory Authentication and Resource Access
 
 The sequence diagram below illustrates the interactions and processes within Active Directory, focusing on user authentication, resource access, and policy application.
 
 ![Active Directory Processes](https://github.com/JainamZobaliya/PixelBlogs/blob/master/tech-pixels/images/AD_SequenceDiagram.png)
 
-## 1. User Requests Authentication
+### 1. User Requests Authentication
 
 - The **User** initiates the process by requesting authentication from the **Domain Controller**.
 
-## 2. Authentication Process
+### 2. Authentication Process
 
 - The **Domain Controller** forwards the credentials to the **Kerberos Authentication** service to validate them.
 - **Kerberos** checks the credentials and responds back to the **Domain Controller** with either an "Auth Success" or "Auth Fail" message.
 - The **Domain Controller** then informs the **User** whether the authentication was successful or not.
 
-## 3. Resource Access
+### 3. Resource Access
 
 - If authentication is successful, the **User** proceeds to request access to a resource (like a file, application, or server) from the **Resource Access** system.
 - **Resource Access** then communicates with the **LDAP Service** to validate the user's permissions for accessing the requested resource.
 - Based on the permissions, **LDAP** either grants or denies access.
 - The **Resource Access** system then responds to the **User** with the result (access granted or denied).
 
-## 4. Group Policy Application
+### 4. Group Policy Application
 
 - Independently, the **Domain Controller** ensures that the **Group Policy** settings are applied to the **User**.
 - **Group Policy** defines configurations and restrictions that apply to the **User**’s account, ensuring compliance with organizational policies.
