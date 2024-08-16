@@ -23,6 +23,11 @@
   - [Security Considerations](#security-considerations)
   - [Benefits of Using AD for Login](#benefits-of-using-ad-for-login)
   - [Challenges](#challenges)
+  - [Active Directory Sequence Diagram Explanation](#active-directory-sequence-diagram-explanation)
+    - [1. User Requests Authentication](#1-user-requests-authentication)
+    - [2. Authentication Process](#2-authentication-process)
+    - [3. Resource Access](#3-resource-access)
+    - [4. Group Policy Application](#4-group-policy-application)
 
 ---
 
@@ -114,3 +119,5 @@ The sequence diagram below illustrates the interactions and processes within Act
 
 - Independently, the **Domain Controller** ensures that the **Group Policy** settings are applied to the **User**.
 - **Group Policy** defines configurations and restrictions that apply to the **User**’s account, ensuring compliance with organizational policies.
+
+---
